@@ -46,19 +46,15 @@ def is_a_one? string
 end
 
 def cut string
-  tabs = string.split(/\n/)
-  
-  lines = tabs.map do | tab |
-    tab.scan(/.../)
-  end
-
-  result = []
-  lines.each do |line|
-    line.each_with_index do |part, index|
-      result[index] = [result[index], part].compact.join "\n"
-    end
-  end
-  result.map { |s| s + "\n" }
+  string.
+    # découpe la chaîne sur les retours à la ligne et renvoie un array avec les lignes dans l'ordre
+    split(/\n/).
+    # toutes les lignes sont coupées en trois morceaux
+    map { |tab| tab.scan(/.../) }.
+    # transposition de matrice ( [[1, 2, 3], [4, 5, 6]] => [[1, 4], [2, 5], [3, 6]]
+    transpose.
+    # maintenant tous les "morceaux" du tableau sont un caractère découpé ligne par ligne ; on les reconstitue en caractère
+    map { |parts| parts.join("\n") + "\n" }
 end
 
 def read_bank_ocr string
