@@ -10,6 +10,8 @@ Présents:
 - xju
 - jvi
 - tpa
+- asc
+- abg
 
 Rétro de la séance précédente:
 - **Kata FizzBuzz (avec une fonction, puis avec la class, puis avec refinement)**
