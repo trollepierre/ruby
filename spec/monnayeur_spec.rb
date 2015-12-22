@@ -13,7 +13,7 @@ class Monnayeur
 # Implementation EauPrecieuse
   def change amount
     result = @coins.inject([]) do |acc, coin|
-      acc + (coin > sum(acc) ? [coin] : [])
+      acc + (sum(acc) < amount ? [coin] : [])
     end
 
     raise "Not enough coins" if sum(result) != amount
