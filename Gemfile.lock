@@ -74,6 +74,7 @@ DEPENDENCIES
   nyan-cat-formatter
   pry
   pry-byebug
+  rb-fsevent
   rspec
 
 BUNDLED WITH
