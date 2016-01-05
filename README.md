@@ -1,32 +1,28 @@
 Prochaine session:
-Mardi 5 Janvier 2016
+Mardi 12 Janvier 2016
 
 Présents:
-- mib
 - abn
 - pni
 - jvi
-- tpa
-- roq
-- asc
+- fla
+- jcb
+- ldu
+- sre
 - oum
-- mdo
-- xju
+- roq
 
 Rétro de la séance précédente:
-- **Randori Chiffres Romains**
-- Très content d'être aller au bout du randorii 'decodage'
-- Pas trop de douleur
-- Sorti rapidement des fakes
-- Bon refacto
-- On a appris ```each_cons```
-- on a revu le maps
+- C'était bien car fabien n'était pas la 
+- Nouveau sujet
+- On a bien avancé
 
 Exercices pour aujourd'hui:
-- **Monnayeur randori**
-- FizzBuzz randori 
-- PokerHand randori
-- 4L de Jacky randori
-- Jeu de la vie de Conway randori
-- Katapotter randori
+iiiii A- vending machine randori
+ii B- FizzBuzz randori
+iiiii C- PokerHand randori
+iiiii D- 4L de Jacky randori
+iii E- Jeu de la vie de Conway randori
+iiiiiiiiii F- **Katapotter randori**
 
+ROTI : 4
