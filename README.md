@@ -4,25 +4,21 @@ Mardi 12 Janvier 2016
 Présents:
 - abn
 - pni
-- jvi
-- fla
-- jcb
-- ldu
-- sre
-- oum
-- roq
+- asc
+- mib
+- tpa
+- xju
 
 Rétro de la séance précédente:
-- C'était bien car fabien n'était pas la 
-- Nouveau sujet
-- On a bien avancé
+sujet : KATAPOTTER
+- Le sujet était bien, et nouveau
+- guard qui marche pas
+- on est pas aller très loin
+- règle mal comprise
+- difficile à faire émerger les patterns : le TDD était dans nos pattes, pas un allié
+- aimerait voir un kata
 
 Exercices pour aujourd'hui:
-iiiii A- vending machine randori
-ii B- FizzBuzz randori
-iiiii C- PokerHand randori
-iiiii D- 4L de Jacky randori
-iii E- Jeu de la vie de Conway randori
-iiiiiiiiii F- **Katapotter randori**
-
-ROTI : 4
+*** Katapotter Randori ***
+  BlackJack Randori
+  Jeu de la vie de Conway Randori
