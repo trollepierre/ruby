@@ -1,32 +1,39 @@
 require "bundler"
 Bundler.require
 
-DISCOUNTS = {
-  1 => 1,
-  2 => 0.95,
-  3 => 0.90,
-  4 => 0.80,
-  5 => 0.75,
-}
+module KataPotter
+  refine Array do
+    def remove_first *values
+      dup.tap do |t|
+        values.each do |value|
+          t.delete_at(t.find_index(value)) rescue nil
+        end
+      end
+    end
+  end
 
-def katapotter *books
-  books_number  = books.length
-  series_number = books.uniq.length
-  return katapotter(*books.uniq) + katapotter(*remove_all(books, books.uniq)) if books_number != series_number
-  8 * ((books_number - series_number) +
-        series_number * DISCOUNTS[series_number])
+  using KataPotter
+
+  DISCOUNTS = {
+    1 => 1,
+    2 => 0.95,
+    3 => 0.90,
+    4 => 0.80,
+    5 => 0.75,
+  }
+
+  def katapotter *books
+    books_number  = books.length
+    series_number = books.uniq.length
+    return 8 * books_number * DISCOUNTS[series_number] if books_number == series_number
+    katapotter(*books.uniq) + katapotter(*books.remove_first(*books.uniq))
+  end
 end
 
-def remove_all remove_from, to_remove
-  to_remove.inject(remove_from) { |r, b| remove_first r, b }
-end
-
-def remove_first tab, value
-  tab.dup.tap { |t| t.delete_at(tab.find_index(value)) rescue nil }
-end
-
-RSpec.describe "Katapotter" do
+RSpec.describe KataPotter do
   describe '#katapotter' do
+    include KataPotter
+
     it { expect(katapotter(1))            .to eq  8 }
     it { expect(katapotter(2))            .to eq  8 }
     it { expect(katapotter(1, 2))         .to eq 15.2 }
@@ -39,19 +46,21 @@ RSpec.describe "Katapotter" do
     it { expect(katapotter(2, 2, 1, 1))   .to eq 30.4 }
   end
 
-  describe "#remove_first" do
-    context "what it does" do
-      it { expect(remove_first([2, 2, 1, 1], 2)).to eq [2, 1, 1] }
-      it { expect(remove_first([2, 2, 1, 1], 3)).to eq [2, 2, 1, 1] }
-    end
+  describe Array do
+    describe "#remove_first" do
+      using KataPotter
 
-    context "what it does not" do
-      let(:original) { [1,2,1,2,4] }
+      context "what it does" do
+        it { expect([2, 2, 1, 1]   .remove_first(2))   .to eq [2, 1, 1] }
+        it { expect([2, 2, 1, 1]   .remove_first(3))   .to eq [2, 2, 1, 1] }
+        it { expect([3, 4, 5, 4, 3].remove_first(3, 5)).to eq [4, 4, 3] }
+      end
 
-      it { expect { remove_first(original, 4) }.not_to change original, :length }
+      context "what it does not" do
+        let(:original) { [1,2,1,2,4] }
+
+        it { expect { original.remove_first(4) }.not_to change original, :to_a }
+      end
     end
   end
-
 end
-
-
